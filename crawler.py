@@ -1,6 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
+from scraper.parser import display_with_pandas
 import pandas as pd
 import time
 import os
@@ -64,3 +65,4 @@ def scrape_quotes():
 
 if __name__ == '__main__':
     scrape_quotes()
+    display_with_pandas()
