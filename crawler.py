@@ -14,7 +14,10 @@ def start_driver():
     options = Options()
     options.add_argument('--headless')
     options.add_argument('--disable-gpu')
+    options.add_argument('--no-sandbox')
+    options.add_argument('--disable-dev-shm-usage')
     options.add_argument('--window-size=1920x1080')
+    options.add_argument('--user-data-dir=/tmp/chrome-user-data')
 
     logger.debug("Inicializando o Chrome WebDriver com opções headless.")
     driver = webdriver.Chrome(options=options)
@@ -23,6 +26,7 @@ def start_driver():
 def scrape_quotes():
     url = 'http://quotes.toscrape.com'
     logger.info(f"Iniciando scraping em: {url}")
+    driver = None
 
     try:
         driver = start_driver()
@@ -60,8 +64,9 @@ def scrape_quotes():
     except Exception as e:
         logger.exception(f"Ocorreu um erro durante o scraping: {e}")
     finally:
-        driver.quit()
-        logger.debug("Driver encerrado.")
+        if driver:
+            driver.quit()
+            logger.debug("Driver encerrado.")
 
 def run_crawler():
     scrape_quotes()
