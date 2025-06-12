@@ -63,6 +63,6 @@ def scrape_quotes():
         driver.quit()
         logger.debug("Driver encerrado.")
 
-if __name__ == '__main__':
+def run_crawler():
     scrape_quotes()
     display_with_pandas()
