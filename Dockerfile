@@ -1,25 +1,10 @@
 FROM python:3.11-slim
 
 RUN apt-get update && apt-get install -y \
-    wget \
-    curl \
-    unzip \
-    gnupg \
-    libnss3 \
-    libgconf-2-4 \
-    libxi6 \
-    libxrandr2 \
-    libxcursor1 \
-    libxcomposite1 \
-    libasound2 \
-    libxdamage1 \
-    libxtst6 \
-    fonts-liberation \
-    libappindicator3-1 \
-    xdg-utils \
-    libgbm-dev \
     chromium \
     chromium-driver \
+    libnss3 \
+    libgbm-dev \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
